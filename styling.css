@@ -1,0 +1,77 @@
+
+
+body {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: auto auto auto;
+    border: 2px dotted blue;
+    border-radius: 5px;
+    
+}
+
+body * {
+    /* border: 2px solid orange;
+    border-radius: 5px; */
+}
+
+#title {
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+}
+
+#selectedchar{
+    grid-row: 2;
+    grid-column: 1;
+}
+
+
+.boardgame {
+    grid-column: 2;
+    align-items: center;
+    width: 600px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+    padding-left: 200px;
+  
+}
+
+.square {
+    display: block;
+    border:  solid black;
+    border-radius: 5px;
+    height: 200px;
+    width: 200px;
+} 
+
+#square1 {
+    border-left: none;
+    border-right: 5px solid black;
+    border-top: none;
+    border-bottom: 5px solid black;
+}
+
+.charSelection{
+    width: 200px;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 100px 100px;
+     border:  solid black;
+    /* border-radius: 5px; */
+  
+}
+
+.characters {
+    display: block;
+    /* border:  solid black;
+    border-radius: 5px; */
+}
+
+.scoreboard {
+    width: 150px;
+     border:  solid black;
+    border-radius: 5px;
+}
