@@ -2,36 +2,45 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
         <title>Tic-Tac-Toe Among Us game</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href='styling.css'>
+        <script src="game.js"></script>
+        
     </head>
     <body>
-        <h1 id="title">Among Us Tic-Tac-Toe </h1>
+        <div id="title">
+            <h1>Among Us Tic-Tac-Toe </h1>
+        </div>
+        <div id='turn'>
+               Player <span class="current-turn"> 1</span>'s turn
+            </div>
         <div class = 'boardgame'>
-            <div class = 'square' id ='square1'></div>
-            <div class = 'square' id ='square2'></div>
-            <div class = 'square' id ='square3'></div>
-            <div class = 'square' id ='square4'></div>
-            <div class = 'square' id ='square5'></div>
-            <div class = 'square' id ='square6'></div>
-            <div class = 'square' id ='square7'></div>
-            <div class = 'square' id ='square8'></div>
-            <div class = 'square' id ='square9'></div>
+            <div class = 'square' id ='0'></div>
+            <div class = 'square' id ='1'></div>
+            <div class = 'square' id ='2'></div>
+            <div class = 'square' id ='3'></div>
+            <div class = 'square' id ='4'></div>
+            <div class = 'square' id ='5'></div>
+            <div class = 'square' id ='6'></div>
+            <div class = 'square' id ='7'></div>
+            <div class = 'square' id ='8'></div>
         </div>
       
-        <aside id="selectedchar">>
-            <h2 id = 'ply1charcter'>Player 1: character choosen</h2>
-            <h2 id ='Plyer2character'>Player 2: character choosen</h2>
-            <h2>Character Selection</h2>
-            <div class="charSelection">
-                <div class ='characters'>Character1</div>
-                <div class ='characters'>Character2</div>
-                <div class ='characters'>Character3</div>
-                <div class ='characters'>Character4</div>
-            </div>
+        <aside id="selectedchar">
+            <h2 id ='ply1charcter'>Player 1: X </h2> 
+            <h2 id ='ply2character'>Player 2: O</h2> 
+
+            <button id="reset">Reset</button>
+            <!-- <h2>Character Selection</h2> -->
+            <!-- <div class="charSelection">
+                <a class ='characters'  href="#"><img src="./imgs/among us characters 1.jpg" id="character1" class="icons"></img></a>
+                <a class ='characters'  href="#"><img src="./imgs/among us characters 2.jpg" id="character2" class="icons"></img></a>
+                <a class ='characters' id="character3" href="#">Character3</a>
+                <a class ='characters' id="character4" href="#">Character4</a>
+            </div> -->
         </aside>
 
         <aside>
@@ -42,7 +51,6 @@
                 <h3>Tie:</h3>
             </div>
         </aside>
-        
         <script src='script.js'></script>
     </body>
 </html>
