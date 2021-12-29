@@ -21,7 +21,7 @@ An application to play a classic game of Tic-Tac-Toe against a friend.
 
 ## Contribute
  - Refrences
- https://dev.to/bornasepic/pure-and-simple-tic-tac-toe-with-javascript-4pgn
+https://dev.to/bornasepic/pure-and-simple-tic-tac-toe-with-javascript-4pgn
 
 https://www.youtube.com/watch?v=B3pmT7Cpi24&ab_channel=JavaScriptAcademy
 
