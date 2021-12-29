@@ -24,20 +24,27 @@ var scoreTie = 0;
 // Alerts winner
 const winner = () => `Player ${currentPlayer} has won!`;
 const tie = () => 'Tie';
+
+// Gets the individual squares from the board
 const squares= Array.from(document.querySelectorAll('.square'));
 console.log(squares)
+
+// Reset button 
 const resetButton = document.querySelector('#reset');
+
+// Top of the page lets you know whose turn it is
 const currentTurn = document.querySelector('.current-turn');
-const champion = document.querySelector('#champion');
-const announcer = document.querySelector('.announcer')
+
 // Sound for the game 
 const zapSound = document.querySelector('#zap')
-
+//Vars for updating the score
 const updateScoreboardX = document.querySelector('#x-wins')
 const updateScoreboardO = document.querySelector('#o-wins')
 const tieBreak = document.querySelector('#tiebreak')
-const currentPlayerTurn = () =>`It's ${currentPlayer}'s turn`;
 
+// Lets you know whose turn it is
+const currentPlayerTurn = () =>`It's ${currentPlayer}'s turn`;
+// Pushes whose turn it is into the element at the top of page
 currentTurn.innerHTML = currentPlayerTurn();
 
 // All possible win combos
@@ -51,24 +58,27 @@ const winCombos = [
     [0, 4, 8],
     [6, 4, 2]
 ]
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 
+// Updates the board with the clicks on the board
 const handleCellPlayed = (clickedCell, clickedCellIndex) => {
     board[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
 }
 
+// function for changing character from X to )
 const changePlayer = () => {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     currentTurn.innerHTML = currentPlayerTurn();
 }
 
+// Updates the board based on the index
 const updateBoard = (index) => {
     board[index] = currentPlayer;
 }
 
 
-
+// Checks if someone won & update scoreboard
 const handleResultValidation = () => {
     let roundWon = false;
     for (let i = 0; i <= 7; i++) {
@@ -109,7 +119,7 @@ const handleResultValidation = () => {
        
 }  
 
-
+// Makes sure can't pick same square twice
 const canMove = (square) => {
     if(square.innerHTML === 'X'|| square.innerHTML === 'O'){
         return false;
@@ -118,10 +128,10 @@ const canMove = (square) => {
     return true;
 };
 
+// reset board to empty every square
 const resetBoard = () => {
     board = ['','','','','','','','',''];
     gameActive = true;
-    announcer.classList.add('hide');
 
     if(currentPlayer === 'O'){
         changePlayer();
@@ -133,6 +143,7 @@ const resetBoard = () => {
     });
 }
 
+// Whenever user moves all this take place
 const userMove = (square, index) => {
     if(canMove(square) && gameActive){
         square.innerText = currentPlayer;
@@ -145,13 +156,21 @@ const userMove = (square, index) => {
 }
 
 
-// Add evennt listner for each square when it is clicked
+// Add event listner for each square when it is clicked
 squares.forEach((square, index) => {
     square.addEventListener('click', () => userMove(square,index));
 });
-
+// Event listener for the reset button
 resetButton.addEventListener('click', resetBoard);
 
+
+
+
+
+
+
+
+//////////////// USE for later when adding Characters ******************************************
 
 // squares.forEach((square) => {
 //     square.addEventListener('click', alert('you picked a square'))
