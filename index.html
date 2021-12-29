@@ -7,28 +7,29 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href='styling.css'>
-        <script src="game.js"></script>
-        
     </head>
     <body>
+        <audio id="zap">
+            <source src="./audio/zapsplat_household_toaster_double_pop_up_11773.mp3" type="audio/mp4">
+        </audio>
         <div id="title">
             <h1>Among Us Tic-Tac-Toe </h1>
         </div>
         <div id='turn'>
-               Player <span class="current-turn"> 1</span>'s turn
-            </div>
-        <div class = 'boardgame'>
-            <div class = 'square' id ='0'></div>
-            <div class = 'square' id ='1'></div>
-            <div class = 'square' id ='2'></div>
-            <div class = 'square' id ='3'></div>
-            <div class = 'square' id ='4'></div>
-            <div class = 'square' id ='5'></div>
-            <div class = 'square' id ='6'></div>
-            <div class = 'square' id ='7'></div>
-            <div class = 'square' id ='8'></div>
+               <span class="current-turn"> </span>
         </div>
-      
+        <div class = 'boardgame'>
+            <div class = 'square' id ='cell 0'></div>
+            <div class = 'square' id ='cell 1'></div>
+            <div class = 'square' id ='cell 2'></div>
+            <div class = 'square' id ='cell 3'></div>
+            <div class = 'square' id ='cell 4'></div>
+            <div class = 'square' id ='cell 5'></div>
+            <div class = 'square' id ='cell 6'></div>
+            <div class = 'square' id ='cell 7'></div>
+            <div class = 'square' id ='cell 8'></div>
+        </div>
+        <div class="champion announcer hide">status</div>
         <aside id="selectedchar">
             <h2 id ='ply1charcter'>Player 1: X </h2> 
             <h2 id ='ply2character'>Player 2: O</h2> 
@@ -43,11 +44,11 @@
             </div> -->
         </aside>
 
-        <aside>
+        <aside class="score">
             <h2>Scoreboard</h2>
             <div class = 'scoreboard'>
-                <h3>Player 1:</h3>
-                <h3>Player 2:</h3>
+                <h3>Player 1: <span id="x-wins"></span></h3>
+                <h3>Player 2: <span id="o-wins"></span></h3>
                 <h3>Tie:</h3>
             </div>
         </aside>

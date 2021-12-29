@@ -5,23 +5,28 @@ console.log('Script is linked')
 
 // if player chooses a character update player choosen with that character
 
-var board = ['','','','','','',''];
+let board = ['','','','','','',''];
 
-let  player1Char = 'X'
-let currentPlayer = 'X'
-const player2Char =  'O'
+// let  player1Char = 'X'
+let currentPlayer = 'X';
+// const player2Char =  'O'
 
 let gameActive = true;
 
-const Player1Won = 'Congrats Player 1 you win!';
-const Player2Won = 'Congrats Player 2 you win!';
-const tie = 'Tie';
+const winner = () => `Player ${currentPlayer} has won!`;
+const tie = () => 'Tie';
 const squares= Array.from(document.querySelectorAll('.square'));
 console.log(squares)
 const resetButton = document.querySelector('#reset');
 const currentTurn = document.querySelector('.current-turn');
+const champion = document.querySelector('#champion');
+const announcer = document.querySelector('.announcer')
+const zapSound = document.querySelector('#zap')
+// const updateScoreboard = () => document.querySelector('#x-wins').innerHTML = game.getWins('X');
+// document.querySelector('#o-wins').innerHTML = game.getWins('O');
+const currentPlayerTurn = () =>`It's ${currentPlayer}'s turn`;
 
-resetButton.addEventListener('click', resetBoard);
+currentTurn.innerHTML = currentPlayerTurn();
 
 
 const winCombos = [
@@ -35,43 +40,93 @@ const winCombos = [
     [6, 4, 2]
 ]
 
+const handleCellPlayed = (clickedCell, clickedCellIndex) => {
+    board[clickedCellIndex] = currentPlayer;
+    clickedCell.innerHTML = currentPlayer;
+}
+
+const changePlayer = () => {
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    currentTurn.innerHTML = currentPlayerTurn();
+}
+
 const updateBoard = (index) => {
     board[index] = currentPlayer;
 }
 
-const changePlayer = () => {
-    currentTurn.classList.remove(`player${currentPlayer}`);
-    currentPlayer = currentPlayer === player1Char ? player2Char : player1Char;
-    currentTurn.innerText = currentPlayer;
-    currentTurn.classList.add(`player${currentPlayer}`);
-}
+
+
+const handleResultValidation = () => {
+    let roundWon = false;
+    for (let i = 0; i <= 7; i++) {
+        const winCondition = winCombos[i];
+        const a = board[winCondition[0]];
+        const b = board[winCondition[1]];
+        const c = board[winCondition[2]];
+        if (a === '' || b === '' || c === '') {
+            continue;
+        }
+        if (a === b && b === c) {
+            roundWon = true;
+            break;
+        }
+    }
+    if (roundWon) {
+        alert( winner())
+        gameActive = false;
+        return;
+    }
+
+    if (!board.includes('')){
+        alert(tie());
+        gameActive = false;
+        return;
+    }
+       
+}  
+
 
 const canMove = (square) => {
-    if(square.innerText === 'X' || square.innerText === 'O'){
+    if(square.innerHTML === 'X'|| square.innerHTML === 'O'){
         return false;
     }
 
     return true;
+};
+
+const resetBoard = () => {
+    board = ['','','','','','','','',''];
+    gameActive = true;
+    announcer.classList.add('hide');
+
+    if(currentPlayer === 'O'){
+        changePlayer();
+    }
+    squares.forEach(square => {
+        square.innerText = '';
+        square.classList.remove('playerX');
+        square.classList.remove('playerO');
+    });
 }
 
-const move =(square, index) => {
+const userMove = (square, index) => {
     if(canMove(square) && gameActive){
-        square.innerText = player1Char;
-        square.classList.add(`player${player1Char}`);
+        square.innerText = currentPlayer;
+        square.classList.add(`player${currentPlayer}`);
+        zapSound.play();
         updateBoard(index);
         handleResultValidation();
         changePlayer();
     }
 }
+
+
 // Add evennt listner for each square when it is clicked
+squares.forEach((square, index) => {
+    square.addEventListener('click', () => userMove(square,index));
+});
 
-squares.forEach((square) => {
-    square.addEventListener('click')
-})
-
-// squares.forEach((square, index) => {
-//     square.addEventListener('click', console.log('hello' + index));
-// });
+resetButton.addEventListener('click', resetBoard);
 
 
 // squares.forEach((square) => {
