@@ -5,16 +5,23 @@ console.log('Script is linked')
 
 // if player chooses a character update player choosen with that character
 
+
+/////////////////ALL Varibables ****************************************
+
+// the state of the board
 let board = ['','','','','','',''];
 
-// let  player1Char = 'X'
+// Sets player 
 let currentPlayer = 'X';
-// const player2Char =  'O'
 
+//Boolean for when to know game is active
 let gameActive = true;
+
+// Score tracker for scoreboard
 var scoreX = 0;
 var scoreO = 0;
 var scoreTie = 0;
+// Alerts winner
 const winner = () => `Player ${currentPlayer} has won!`;
 const tie = () => 'Tie';
 const squares= Array.from(document.querySelectorAll('.square'));
@@ -23,7 +30,9 @@ const resetButton = document.querySelector('#reset');
 const currentTurn = document.querySelector('.current-turn');
 const champion = document.querySelector('#champion');
 const announcer = document.querySelector('.announcer')
+// Sound for the game 
 const zapSound = document.querySelector('#zap')
+
 const updateScoreboardX = document.querySelector('#x-wins')
 const updateScoreboardO = document.querySelector('#o-wins')
 const tieBreak = document.querySelector('#tiebreak')
@@ -31,7 +40,7 @@ const currentPlayerTurn = () =>`It's ${currentPlayer}'s turn`;
 
 currentTurn.innerHTML = currentPlayerTurn();
 
-
+// All possible win combos
 const winCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -42,6 +51,7 @@ const winCombos = [
     [0, 4, 8],
     [6, 4, 2]
 ]
+/////////////////////////////////////////////////////////////////
 
 const handleCellPlayed = (clickedCell, clickedCellIndex) => {
     board[clickedCellIndex] = currentPlayer;
