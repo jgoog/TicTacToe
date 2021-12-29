@@ -12,7 +12,9 @@ let currentPlayer = 'X';
 // const player2Char =  'O'
 
 let gameActive = true;
-
+var scoreX = 0;
+var scoreO = 0;
+var scoreTie = 0;
 const winner = () => `Player ${currentPlayer} has won!`;
 const tie = () => 'Tie';
 const squares= Array.from(document.querySelectorAll('.square'));
@@ -22,8 +24,9 @@ const currentTurn = document.querySelector('.current-turn');
 const champion = document.querySelector('#champion');
 const announcer = document.querySelector('.announcer')
 const zapSound = document.querySelector('#zap')
-// const updateScoreboard = () => document.querySelector('#x-wins').innerHTML = game.getWins('X');
-// document.querySelector('#o-wins').innerHTML = game.getWins('O');
+const updateScoreboardX = document.querySelector('#x-wins')
+const updateScoreboardO = document.querySelector('#o-wins')
+const tieBreak = document.querySelector('#tiebreak')
 const currentPlayerTurn = () =>`It's ${currentPlayer}'s turn`;
 
 currentTurn.innerHTML = currentPlayerTurn();
@@ -73,12 +76,23 @@ const handleResultValidation = () => {
     }
     if (roundWon) {
         alert( winner())
+        if(currentPlayer === 'X') {
+             scoreX =scoreX+1;
+            updateScoreboardX.innerHTML = scoreX
+            
+        }
+        else {
+            scoreO =scoreO+1;
+            updateScoreboardO.innerHTML = scoreO
+        }
         gameActive = false;
         return;
     }
 
     if (!board.includes('')){
         alert(tie());
+        scoreTie =scoreTie+1;
+        tieBreak.innerHTML = scoreTie
         gameActive = false;
         return;
     }
